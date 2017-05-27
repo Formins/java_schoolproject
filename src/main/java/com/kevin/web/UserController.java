@@ -134,7 +134,6 @@ public class UserController {
             }
 
             map.put("success",true);
-            map.put("message","注册成功");
             return map;
         }
         else {

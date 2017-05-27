@@ -63,7 +63,7 @@ public class PersonController {
     @ApiOperation(value = "修改用户信息",notes = "id为用户user的id")
     @PutMapping(value = "/personinfo/{id}")
     public Map putPerson(@PathVariable("id") Integer id,
-                          @RequestBody  Map map) throws JSONException {
+                          @RequestParam  Map map) throws JSONException {
         Map<String,Object> reMap = new HashMap<>();
         User user = userRepository.findOne(id);
         Long username = user.getUsername();
@@ -84,23 +84,23 @@ public class PersonController {
         if(map.get("email")!=null){
             person.setEmail((String) map.get("email"));
         }
-        if(map.get("enter_year")!=null){
-            person.setEnterYear(Integer.parseInt((String) map.get("enter_year")));
+        if(map.get("enterYear")!=null){
+            person.setEnterYear(Integer.parseInt((String) map.get("enterYear")));
         }
-        if(map.get("graduation_year")!=null){
-            person.setGraduationYear(Integer.parseInt((String) map.get("graduation_year")));
+        if(map.get("graduationYear")!=null){
+            person.setGraduationYear(Integer.parseInt((String) map.get("graduationYear")));
         }
         if(map.get("major")!=null){
             person.setMajor((String) map.get("major"));
         }
-        if(map.get("phone_number")!=null){
-            person.setPhoneNumber(Long.parseLong((String)map.get("phone_number")));
+        if(map.get("phoneNumber")!=null){
+            person.setPhoneNumber(Long.parseLong((String)map.get("phoneNumber")));
         }
         if(map.get("sex")!=null){
             person.setSex((String) map.get("sex"));
         }
-        if(map.get("work_unit")!=null){
-            person.setWorkUnit((String) map.get("work_unit"));
+        if(map.get("workUnit")!=null){
+            person.setWorkUnit((String) map.get("workUnit"));
         }
         personRepository.save(person);
         reMap.put("success",true);
